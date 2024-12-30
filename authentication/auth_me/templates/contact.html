@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Authentication and Session Management System in OS</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
+    body {
+      font-family: 'Poppins';
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #000000;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .section:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .form-container {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-container label {
+      font-weight: 500;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container button {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .form-container textarea {
+      resize: none;
+    }
+
+    .form-container button {
+      background-color: #000000;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #333333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #000000;
+      color: white;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 2s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Reach out to us!</p>
+  </header>
+
+  <div class="container">
+    <section class="section">
+      <h2>Get in Touch</h2>
+      <p>
+        Whether you have a question, feedback, or a project inquiry, feel free to contact us using the form below. 
+        Our team will get back to you as soon as possible.
+      </p>
+    </section>
+
+    <section class="section form-container">
+      <form action="#" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2024 Authentication and Session Management System in OS. All rights reserved.
+  </footer>
+</body>
+</html>

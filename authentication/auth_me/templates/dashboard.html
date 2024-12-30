@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IDEaze</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
+      :root {
+        --primary-color: #b45309;
+        --extra-light: #f3f4f6;
+        --max-width: 1200px;
+        --hover-color: #9b4dca; /* Purple color for hover */
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      nav {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: var(--max-width);
+        padding: 2rem 1rem;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .nav__logo {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        transition: text-shadow 0.3s ease;
+        cursor-pointer;
+      }
+
+      .logo__id {
+        color: #CC5500; 
+      }
+
+      .logo__ease {
+        color: #fff; /* Purple color for "Ease" */
+      }
+
+      .nav__logo:hover {
+        text-shadow: 0 0 15px rgba(155, 77, 202, 1); /* Purple glow on hover */
+      }
+
+      .nav__links {
+        list-style: none;
+        gap: 2rem;
+        display: none;
+      }
+
+      .nav__links a {
+        padding: 1rem;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: text-shadow 0.3s ease, text-decoration 0.3s ease; /* Added transition for underline */
+      }
+      
+      .nav__links a:hover {
+        text-shadow: 0 0 12px rgba(155, 77, 202, 1); /* Purple glow on hover */
+        text-decoration: underline; /* Underline on hover */
+      }
+
+      a.contact__btn {
+        padding: 0.5rem 2rem;
+        border: 2px solid var(--extra-light);
+        position: relative;
+      }
+
+      a.contact__btn:hover{
+        transform: scale(1.1);
+        background-color: var(--primary-color);
+        color: var(--extra-light);
+        border-radius: 8px;
+        padding: 0.6rem 2.2rem;
+      }
+
+      .contact__btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -40%;
+        transform: translateY(-50%);
+        height: 5px;
+        width: 50%;
+        border-radius: 5px;
+        background-image: linear-gradient(
+          to right,
+          var(--primary-color),
+          rgba(0, 0, 0, 0)
+        );
+      }
+
+      header {
+        position: relative;
+        overflow: hidden;
+      }
+
+      #background-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1; /* Ensure the video stays behind the content */
+      }
+
+      .header__container {
+        position: relative;
+        min-height: 100vh; /* Full viewport height */
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center; /* Center the content vertically */
+        justify-content: center; /* Center the content horizontally */
+    }
+    
+    .header__content {
+        background-color: rgba(0, 0, 0, 0.6); /* Transparent black background */
+        padding: 2rem;
+        border-radius: 10px; /* Rounded corners */
+        text-align: center; /* Center-align text inside */
+        width: 90%; /* Adjust width for responsiveness */
+        max-width: 500px; /* Maximum width */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Add subtle shadow */
+    }
+    
+    .header__content h2, .header__content h3 {
+        font-family: "Times New Roman", Times, serif; /* Times New Roman font */
+        color: white; /* White text color */
+        margin-bottom: 1rem; /* Space between headings */
+    }
+    
+    .header__content .button {
+        display: inline-block;
+        text-decoration: none;
+        margin: 1rem 0.5rem; /* Space between buttons */
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        background-color: #b45309; /* Primary button color */
+        border: none;
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .header__content .button:hover {
+        transform: scale(1.1); /* Button enlarges slightly on hover */
+        background-color: #9b4dca; /* Hover color */
+    }
+    
+      .footer__cards {
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - 2rem);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        align-items: end;
+      }
+
+      .card {
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        height: max-content;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+
+      .card h4 {
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: #fff;
+      }
+
+      .card h5 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #CC5500;
+
+      }
+
+      .card p {
+        margin-top: 1.2rem;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+
+      @media (min-width: 640px) {
+        .header__container {
+          min-height: 150vh;
+        }
+
+        .header__content {
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .header__content h1 {
+          font-size: 4rem;
+          line-height: 5rem;
+        }
+
+        .footer__cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 780px) {
+        .nav__links {
+          display: flex;
+        }
+
+        .header__container {
+          min-height: 100vh;
+        }
+
+        .header__content h1 {
+          font-size: 5rem;
+          line-height: 6rem;
+        }
+
+        .footer__cards {
+          grid-template-columns: repeat(6, 1fr);
+        }
+
+        .card {
+          height: 100px;
+        }
+
+        .card:hover {
+          height: 250px;
+        }
+      }
+    </style>
+    {% load static %}
+  </head>
+  <body>
+    <nav>
+      <div class="nav__logo">
+        <span class="logo__id">ID</span><span class="logo__ease">Ease</span>
+      </div>
+      <ul class="nav__links">
+        <li class="link"><a href="#">About</a></li>
+        <li class="link"><a href="#">Case Study</a></li>
+        <li class="link"><a href="#">Vision</a></li>
+        <li class="link"><a href="#" class="contact__btn">Contact</a></li>
+      </ul>
+    </nav>
+    <header>
+      <video autoplay muted loop id="background-video">
+        <source src="{% static '2.mp4' %}" type="video/mp4" />
+
+        Your browser does not support the video tag.
+      </video>
+      <div class="header__container">
+        <div class="header__content">
+          <h2>Welcome, {{ user.username }}</h2>
+          <h3>You are an authentic user</h3>
+          <a href="{% url 'logout' %}" class="button logout">Logout</a>
+          <a href="{% url 'home' %}" class="button">Return to Home</a>
+      </div>
+        <div class="footer__cards">
+          <div class="card">
+            <h4>Team</h4>
+            <h5>Members & their Roles</h5>
+            <p>
+                A group of dedicated individuals, each contributing their unique skills to create something extraordinary.Together, we build, innovate, and inspire, turning ideas into impactful solutions.
+            </p>
+          </div>
+          <div class="card">
+            <h4>01</h4>
+            <h5>Yahya Faisal</h5>
+            <p>Team Lead & Frontend Developer</p>
+            <p>A visionary leader, guiding the team with innovation and frontend expertise.</p>
+          </div>
+          <div class="card">
+            <h4>02</h4>
+            <h5>Hashim Ibrahim</h5>
+            <p>Frontend & Backend Developer</p>
+            <p>A versatile developer, bridging frontend and backend to bring ideas to life.</p>
+          </div>
+          <div class="card">
+            <h4>03</h4>
+            <h5>Taiba Rani</h5>
+            <p>DocForge Specialist</p>
+            <p>A detail-oriented documentation specialist, ensuring clarity and precision in every project.</p>
+          </div>
+          <div class="card">
+            <h4>04</h4>
+            <h5>Ali Murtaza</h5>
+            <p>Documentation & Support</p>
+            <p>A reliable support and documentation expert, ensuring smooth execution and communication.</p>
+          </div>
+          <div class="card">
+            <h4>05</h4>
+            <h5>Husna</h5>
+            <p>Speaker</p>
+            <p>The team's voice, representing us with passion and eloquence in every presentation.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>
