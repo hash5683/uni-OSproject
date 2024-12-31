@@ -1,0 +1,25 @@
+{
+    "version":2,
+    "builds":[
+        {
+            "src": "authentication/wsgi.py",
+            "use": "@vercel/python",
+            "config": {"maxLambdoSize":"15mb", "Runtime":"python3.9"}
+        },
+        {
+            "src": "build_files.sh",
+            "use": "@vercel/static-build",
+            "config": {"distDir":"staticfiles_build"}
+        }
+    ],
+    "routes": [
+        {
+            "scr":  "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "scr": "/(.*)",
+            "dest": "authentication/wsgi.py"
+        }
+    ]
+}
